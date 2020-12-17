@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00A703E258BE0090029A061 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00A703D258BE0090029A061 /* CategoryTableViewController.swift */; };
 		C0330A77258A6E6600DB3113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A76258A6E6600DB3113 /* AppDelegate.swift */; };
 		C0330A79258A6E6600DB3113 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A78258A6E6600DB3113 /* SceneDelegate.swift */; };
 		C0330A7B258A6E6600DB3113 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A7A258A6E6600DB3113 /* ToDoListViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C00A703D258BE0090029A061 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		C0330A73258A6E6600DB3113 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0330A76258A6E6600DB3113 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0330A78258A6E6600DB3113 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				C0330A76258A6E6600DB3113 /* AppDelegate.swift */,
 				C0330A78258A6E6600DB3113 /* SceneDelegate.swift */,
+				C00A703D258BE0090029A061 /* CategoryTableViewController.swift */,
 				C0330A7A258A6E6600DB3113 /* ToDoListViewController.swift */,
 				C0330A7C258A6E6600DB3113 /* Main.storyboard */,
 				C0330A82258A6E6700DB3113 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			files = (
 				C0330A7B258A6E6600DB3113 /* ToDoListViewController.swift in Sources */,
 				C0330A77258A6E6600DB3113 /* AppDelegate.swift in Sources */,
+				C00A703E258BE0090029A061 /* CategoryTableViewController.swift in Sources */,
 				C0330A79258A6E6600DB3113 /* SceneDelegate.swift in Sources */,
 				C0330A81258A6E6600DB3113 /* ToDoList.xcdatamodeld in Sources */,
 			);
