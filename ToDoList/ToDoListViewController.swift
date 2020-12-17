@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newItem = Item()
-        newItem.title = "HI"
-        itemArray.append(newItem)
-        
+        loadItems()
+       
     }
     
 //MARK - UITableVIew Methods
@@ -31,7 +32,7 @@ class ToDoListViewController: UITableViewController {
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        tableView.reloadData()
+        saveItems()
     
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -61,12 +62,13 @@ class ToDoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New ToDo Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
-            // appends new item the the itemArray
-            
-            let newItem = Item()
+            // creates a new item in core data
+            let newItem = Item(context: self.context)
             newItem.title = textField.text!
+            newItem.done = false
+            // adds new item to the array
             self.itemArray.append(newItem)
-            
+            //reloads table so new items are displayed
             self.tableView.reloadData()
             
         }
@@ -79,6 +81,28 @@ class ToDoListViewController: UITableViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func saveItems() {
+        
+        do {
+           try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    func loadItems() {
+        
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+        itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
     }
     
 

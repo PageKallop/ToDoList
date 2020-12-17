@@ -16,7 +16,6 @@
 		C0330A86258A6E6700DB3113 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0330A84258A6E6700DB3113 /* LaunchScreen.storyboard */; };
 		C0330A91258A6E6800DB3113 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A90258A6E6800DB3113 /* ToDoListTests.swift */; };
 		C0330A9C258A6E6800DB3113 /* ToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A9B258A6E6800DB3113 /* ToDoListUITests.swift */; };
-		C0395379258AA4BA00459F98 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0395378258AA4BA00459F98 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		C0330A97258A6E6800DB3113 /* ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0330A9B258A6E6800DB3113 /* ToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITests.swift; sourceTree = "<group>"; };
 		C0330A9D258A6E6800DB3113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0395378258AA4BA00459F98 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +104,6 @@
 				C0330A76258A6E6600DB3113 /* AppDelegate.swift */,
 				C0330A78258A6E6600DB3113 /* SceneDelegate.swift */,
 				C0330A7A258A6E6600DB3113 /* ToDoListViewController.swift */,
-				C0395378258AA4BA00459F98 /* Item.swift */,
 				C0330A7C258A6E6600DB3113 /* Main.storyboard */,
 				C0330A82258A6E6700DB3113 /* Assets.xcassets */,
 				C0330A84258A6E6700DB3113 /* LaunchScreen.storyboard */,
@@ -264,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0395379258AA4BA00459F98 /* Item.swift in Sources */,
 				C0330A7B258A6E6600DB3113 /* ToDoListViewController.swift in Sources */,
 				C0330A77258A6E6600DB3113 /* AppDelegate.swift in Sources */,
 				C0330A79258A6E6600DB3113 /* SceneDelegate.swift in Sources */,
