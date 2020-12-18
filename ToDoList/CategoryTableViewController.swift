@@ -8,9 +8,9 @@
 import UIKit
 import Foundation
 import CoreData
-import SwipeCellKit
 
-class CategoryTableViewController: UITableViewController {
+
+class CategoryTableViewController: SwipeTableViewController {
     
     var categories = [Category]()
     
@@ -32,20 +32,21 @@ class CategoryTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! SwipeTableViewCell
-        cell.delegate = self
+       
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = categories[indexPath.row].name
         
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "GoToItems", sender: self)
     }
     
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
         let destinationVC = segue.destination as! ToDoListViewController
@@ -110,28 +111,19 @@ class CategoryTableViewController: UITableViewController {
         
         tableView.reloadData()
     }
-
-}
-//MARK:- Swipe Cell Delegate Methods
-extension CategoryTableViewController: SwipeTableViewCellDelegate {
-    //delete cell function
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == . right else { return nil }
-        //swipe delete action
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            // delete from core datat 
-            self.context.delete(self.categories[indexPath.row])
-            self.saveCategory()
-            
-            print("item deleted")
-            }
-        deleteAction.image = UIImage(named: "delete-Icon")
+    
+    override func updateModel(at indexPath: IndexPath) {
         
-        return [deleteAction]
+        context.delete(categories[indexPath.row])
+
+         saveCategory()
+     
     }
-    
-    
+        
     
 }
+
+
+ 
     
 

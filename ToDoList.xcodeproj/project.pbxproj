@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		C0330A86258A6E6700DB3113 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0330A84258A6E6700DB3113 /* LaunchScreen.storyboard */; };
 		C0330A91258A6E6800DB3113 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A90258A6E6800DB3113 /* ToDoListTests.swift */; };
 		C0330A9C258A6E6800DB3113 /* ToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0330A9B258A6E6800DB3113 /* ToDoListUITests.swift */; };
+		C0925EC4258D1F59007E9CD6 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0925EC3258D1F59007E9CD6 /* SwipeTableViewController.swift */; };
 		DB3930310DF3E22B9B78B472 /* Pods_ToDoList_ToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D355838DAF21D52439F48D91 /* Pods_ToDoList_ToDoListUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		C0330A97258A6E6800DB3113 /* ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0330A9B258A6E6800DB3113 /* ToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITests.swift; sourceTree = "<group>"; };
 		C0330A9D258A6E6800DB3113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0925EC3258D1F59007E9CD6 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		D0DF5CCA26180F3FB464A0D1 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D355838DAF21D52439F48D91 /* Pods_ToDoList_ToDoListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList_ToDoListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,7 +107,6 @@
 				217A675D284F8CC2B6E24BDF /* Pods-ToDoListTests.debug.xcconfig */,
 				334C7A8A99AFD6512F57E748 /* Pods-ToDoListTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -137,6 +138,7 @@
 				C0330A76258A6E6600DB3113 /* AppDelegate.swift */,
 				C0330A78258A6E6600DB3113 /* SceneDelegate.swift */,
 				C00A703D258BE0090029A061 /* CategoryTableViewController.swift */,
+				C0925EC3258D1F59007E9CD6 /* SwipeTableViewController.swift */,
 				C0330A7A258A6E6600DB3113 /* ToDoListViewController.swift */,
 				C0330A7C258A6E6600DB3113 /* Main.storyboard */,
 				C0330A82258A6E6700DB3113 /* Assets.xcassets */,
@@ -417,6 +419,7 @@
 				C0330A77258A6E6600DB3113 /* AppDelegate.swift in Sources */,
 				C00A703E258BE0090029A061 /* CategoryTableViewController.swift in Sources */,
 				C0330A79258A6E6600DB3113 /* SceneDelegate.swift in Sources */,
+				C0925EC4258D1F59007E9CD6 /* SwipeTableViewController.swift in Sources */,
 				C0330A81258A6E6600DB3113 /* ToDoList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
