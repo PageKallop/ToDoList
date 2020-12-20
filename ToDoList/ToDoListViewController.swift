@@ -8,13 +8,15 @@
 import UIKit
 import CoreData
 
-class ToDoListViewController: UITableViewController {
+class ToDoListViewController: SwipeTableViewController {
     
     var itemArray = [Item]()
     
     //calls items from selected category
     var selectedCategory: Category? {
         didSet {
+            
+            
             loadItems()
         }
         
@@ -25,13 +27,13 @@ class ToDoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
        
     }
     
 //MARK - UITableVIew Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return itemArray.count
     }
     
@@ -46,8 +48,9 @@ class ToDoListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+       
         
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = itemArray[indexPath.row].title
         
@@ -123,6 +126,14 @@ class ToDoListViewController: UITableViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        context.delete(itemArray[indexPath.row])
+
+         saveItems()
+     
     }
 
 }
