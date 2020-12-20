@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 class ToDoListViewController: SwipeTableViewController {
     
@@ -52,7 +53,10 @@ class ToDoListViewController: SwipeTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
+
         cell.textLabel?.text = itemArray[indexPath.row].title
+        
+        cell.backgroundColor = FlatSkyBlue().darken(byPercentage: CGFloat(indexPath.row / itemArray.count))
         
         // allows users to check and uncheck items in row
         if itemArray[indexPath.row].done == true {
