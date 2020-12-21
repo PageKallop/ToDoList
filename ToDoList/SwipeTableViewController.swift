@@ -7,11 +7,15 @@
 
 import UIKit
 import SwipeCellKit
+import CoreData
 
 class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegate{
     
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         tableView.rowHeight = 80.0
         
@@ -34,31 +38,24 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         guard orientation == . right else { return nil }
         //swipe delete action
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
-
+            
+            
            self.updateModel(at: indexPath)
+            
 
             print("item deleted")
         }
         deleteAction.image = UIImage(named: "delete-Icon")
+        
 
         return [deleteAction]
-
+        
 
     }
-//    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-//        var options = SwipeTableOptions()
-//        options.expansionStyle = .destructive
-//
-//         return options
-//
-//    }
-    
 
-    
-   
     func updateModel(at indexPath: IndexPath) {
-        
-        
+       
+
     }
     
 }

@@ -15,16 +15,29 @@ class CategoryTableViewController: SwipeTableViewController {
     
     var categories = [Category]()
     
+    // create context for core data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //remove line sepoator
         tableView.separatorStyle = .none 
         
          loadCategory()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       // Give NavBar a set color
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Nav bar doesn't exist")
+        }
+        
+        navBar.backgroundColor = UIColor(hexString: "1D9BF6")
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -39,7 +52,12 @@ class CategoryTableViewController: SwipeTableViewController {
         
         cell.textLabel?.text = categories[indexPath.row].name
         
-        cell.backgroundColor = UIColor(hexString: categories[indexPath.row].color ?? "1D9BF6")
+       
+
+     cell.backgroundColor = UIColor(hexString: categories[indexPath.row].color ??
+        "1d9bf6")
+       
+    cell.textLabel?.textColor = ContrastColorOf(UIColor(hexString: categories[indexPath.row].color ?? "1d9bf6")!, returnFlat: true)
         
         return cell
     }
@@ -50,7 +68,7 @@ class CategoryTableViewController: SwipeTableViewController {
         performSegue(withIdentifier: "GoToItems", sender: self)
     }
     
-   
+   //creates segue from selecting table view cells 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
         let destinationVC = segue.destination as! ToDoListViewController
@@ -75,7 +93,6 @@ class CategoryTableViewController: SwipeTableViewController {
            
             newCategory.name = textField.text!
             
-            
             newCategory.color = UIColor.randomFlat().hexValue()
             // adds new item to the array
             self.categories.append(newCategory)
@@ -94,7 +111,7 @@ class CategoryTableViewController: SwipeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
+    // saves item to core data
     func saveCategory() {
         
         do {
@@ -106,7 +123,7 @@ class CategoryTableViewController: SwipeTableViewController {
         self.tableView.reloadData()
         
     }
-                                                        
+    // loads items from core data
     func loadCategory() {
         
         let request: NSFetchRequest<Category> = Category.fetchRequest()
@@ -121,11 +138,14 @@ class CategoryTableViewController: SwipeTableViewController {
         tableView.reloadData()
     }
     
+    // removes table cell
     override func updateModel(at indexPath: IndexPath) {
         
-        context.delete(categories[indexPath.row])
+        
+        self.context.delete(categories[indexPath.row])
+        categories.remove(at: indexPath.row)
+          saveCategory()
 
-         saveCategory()
      
     }
         

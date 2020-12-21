@@ -13,6 +13,9 @@ class ToDoListViewController: SwipeTableViewController {
     
     var itemArray = [Item]()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     //calls items from selected category
     var selectedCategory: Category? {
         didSet {
@@ -28,7 +31,31 @@ class ToDoListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        tableView.separatorStyle = .none 
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       //loads the same category and color from CategoryVC and sets contrasting text color
+        if let colorHex = selectedCategory?.color {
+            
+            title = selectedCategory!.name
+            
+            guard let navBar = navigationController?.navigationBar else {fatalError("Nav doesn't exists")}
+            
+            if let navBarColor = UIColor(hexString: colorHex) {
+                
+                navBar.backgroundColor = navBarColor
+                
+                navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+                
+                navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
+                
+                searchBar.barTintColor = navBarColor
+            }
+            
+            
+        }
     }
     
 //MARK - UITableVIew Methods
@@ -56,7 +83,12 @@ class ToDoListViewController: SwipeTableViewController {
 
         cell.textLabel?.text = itemArray[indexPath.row].title
         
-        cell.backgroundColor = FlatSkyBlue().darken(byPercentage: CGFloat(indexPath.row / itemArray.count))
+        //creates a gradient for item list
+        if let color = UIColor(hexString: selectedCategory!.color!)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(itemArray.count)) {
+            cell.backgroundColor = color
+            cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+        }
+
         
         // allows users to check and uncheck items in row
         if itemArray[indexPath.row].done == true {
@@ -99,6 +131,7 @@ class ToDoListViewController: SwipeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //Saves items into context to core data
     func saveItems() {
         
         do {
@@ -110,7 +143,8 @@ class ToDoListViewController: SwipeTableViewController {
         self.tableView.reloadData()
         
     }
-                                                        //give default parameter
+    
+    //loads items                                                //give default parameter
     func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
         
         let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
@@ -132,9 +166,11 @@ class ToDoListViewController: SwipeTableViewController {
         tableView.reloadData()
     }
     
+    // removes table cell
     override func updateModel(at indexPath: IndexPath) {
         
         context.delete(itemArray[indexPath.row])
+        itemArray.remove(at: indexPath.row)
 
          saveItems()
      
